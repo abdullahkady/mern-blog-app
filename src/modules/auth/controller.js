@@ -11,7 +11,6 @@ const registerUser = async (req, res, next) => {
 
     // Cleanup the response, removing the hashed password
     const createdUser = userDocument.toJSON();
-    delete createdUser.password;
 
     return res.status(CREATED).json(createdUser);
   } catch (err) {

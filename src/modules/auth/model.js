@@ -32,6 +32,13 @@ userSchema.methods.comparePassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
+// Remove the password hash when returning a document
+userSchema.methods.toJSON = function () {
+  const userDoc = this.toObject();
+  delete userDoc.password;
+  return userDoc;
+};
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
