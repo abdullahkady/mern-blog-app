@@ -1,12 +1,13 @@
 const { Router } = require('express');
 
 const authRouter = require('./modules/auth/router');
+const postsRouter = require('./modules/post/router');
 const { isAuthenticated } = require('./modules/auth/services');
 
-const router = new Router();
+const router = Router();
 
 router.use('/auth', authRouter);
 
-router.use('/blogs', isAuthenticated, (req, res) => res.send('Hello world!'));
+router.use('/posts', isAuthenticated, postsRouter);
 
 module.exports = router;
