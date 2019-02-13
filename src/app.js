@@ -4,11 +4,13 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { NOT_FOUND, BAD_REQUEST } = require('http-status');
 
+const router = require('./router');
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(helmet());
 
-// app.use('/api', router);
+app.use('/api', router);
 
 // General error handler
 app.use((err, req, res, next) => { // eslint-disable-line
