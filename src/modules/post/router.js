@@ -1,11 +1,11 @@
 const { Router } = require('express');
-const { createPost, getPosts } = require('./controller');
+const { createPost, listAllPosts } = require('./controller');
 const { isAuthenticated } = require('../auth/services');
 
 const router = Router();
 
 router.use(isAuthenticated);
 router.post('/', createPost);
-router.get('/', getPosts);
+router.get('/', listAllPosts);
 
 module.exports = router;
