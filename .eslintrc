@@ -4,6 +4,7 @@
     "no-underscore-dangle": "off",
     "func-names": "off",
     "max-len": "warn",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "consistent-return": "off"
   }
 }
