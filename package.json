@@ -1,0 +1,21 @@
+{
+  "name": "se19-task",
+  "version": "1.0.0",
+  "description": "The backend for a blog app using the MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "keywords": [],
+  "author": "Abdullah Elkady",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
