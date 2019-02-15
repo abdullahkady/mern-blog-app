@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { listAllPosts } from "../services/PostsService";
 import { Link } from "react-router-dom";
 import Post from "./Post";
@@ -8,14 +9,21 @@ export default class PostsList extends Component {
   _isMounted = true;
   state = {
     posts: [],
-    isLoading: true
+    isLoading: true,
+    redirect: false
   };
 
   addNewPost = e => {
     e.preventDefault();
   };
   async componentDidMount() {
-    const posts = await listAllPosts();
+    let posts = [];
+    try {
+      posts = await listAllPosts();
+    } catch (error) {
+      // TODO: Generic error handling should be refined
+      this.setState({ redirect: true });
+    }
     if (this._isMounted) this.setState({ posts, isLoading: false });
   }
 
@@ -24,9 +32,25 @@ export default class PostsList extends Component {
   }
 
   render() {
-    const { isLoading, posts } = this.state;
+    const { isLoading, posts, redirect } = this.state;
     if (isLoading) {
       return <Spinner />;
+    }
+    if (redirect) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/",
+            state: {
+              alert: {
+                header: "Oops!",
+                message: "Something went wrong.",
+                type: "danger"
+              }
+            }
+          }}
+        />
+      );
     }
     return (
       <div align="center">
