@@ -5,14 +5,15 @@ import { signupUser } from "../services/AuthService";
 export default class Register extends Component {
   state = {
     redirect: false,
-    error: null
+    error: null,
+    dismissError: false
   };
 
   onSubmit = async e => {
     e.preventDefault();
     const username = e.target.username.value;
     const password = e.target.password.value;
-
+    this.setState({ dismissError: false });
     try {
       await signupUser(username, password);
       this.setState({ redirect: true });
@@ -30,9 +31,9 @@ export default class Register extends Component {
             pathname: "/login",
             state: {
               alert: {
-                header: "Welcome!",
+                header: "Welcome aboard!",
                 message:
-                  "Your account has been created successfully. Enjoy your stay :)",
+                  "Your account has been created successfully. Please login to start using the site :)",
                 type: "success"
               }
             }
@@ -43,6 +44,19 @@ export default class Register extends Component {
 
     return (
       <React.Fragment>
+        {!this.state.dismissError && error && (
+          <div className="alert alert-dismissible alert-danger">
+            <button
+              type="button"
+              className="close"
+              onClick={e => this.setState({ dismissError: true })}
+            >
+              &times;
+            </button>
+            <strong>Oops!</strong>
+            {" " + error}
+          </div>
+        )}
         <form onSubmit={this.onSubmit}>
           <fieldset>
             <legend>Register a new account</legend>
@@ -56,6 +70,7 @@ export default class Register extends Component {
                 name="username"
                 autoComplete="username"
                 placeholder="Enter username"
+                required={true}
               />
             </div>
             <div className="form-group">
@@ -79,13 +94,7 @@ export default class Register extends Component {
             </button>
           </fieldset>
         </form>
-
-        {error ? <p style={errorStyle}>ERROR: {this.state.error}</p> : ""}
       </React.Fragment>
     );
   }
 }
-
-const errorStyle = {
-  color: "red"
-};

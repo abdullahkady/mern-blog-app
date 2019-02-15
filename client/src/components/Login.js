@@ -5,11 +5,14 @@ import { authenticateUser } from "../services/AuthService";
 export default class Login extends Component {
   state = {
     redirect: false,
-    error: false
+    error: null,
+    dismissError: false,
+    dismissAlert: false
   };
 
   onSubmit = async e => {
     e.preventDefault();
+    this.setState({ error: null, dismissError: false });
     const username = e.target.username.value;
     const password = e.target.password.value;
 
@@ -28,9 +31,13 @@ export default class Login extends Component {
   };
 
   render() {
-    const { redirect, error } = this.state;
+    const { dismissError, redirect, error } = this.state;
     let alert = undefined;
-    if (this.props.location && this.props.location.state)
+    if (
+      !this.state.dismissAlert &&
+      this.props.location &&
+      this.props.location.state
+    )
       alert = this.props.location.state.alert;
 
     if (redirect) {
@@ -54,16 +61,24 @@ export default class Login extends Component {
       <React.Fragment>
         {alert && (
           <div className={`alert alert-dismissible alert-${alert.type}`}>
-            <button type="button" className="close" data-dismiss="alert">
+            <button
+              type="button"
+              className="close"
+              onClick={e => this.setState({ dismissAlert: true })}
+            >
               &times;
             </button>
             <strong>{alert.header}</strong>
             {" " + alert.message}
           </div>
         )}
-        {error && (
+        {!dismissError && error && (
           <div className="alert alert-dismissible alert-danger">
-            <button type="button" className="close" data-dismiss="alert">
+            <button
+              type="button"
+              className="close"
+              onClick={e => this.setState({ dismissError: true })}
+            >
               &times;
             </button>
             <strong>Oops!</strong>
