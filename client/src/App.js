@@ -6,7 +6,7 @@ import PostsList from "./components/PostsList";
 import CreatePost from "./components/CreatePost";
 import withAuth from "./hocs/withAuth";
 import NavBar from "./components/NavBar";
-
+import HomePage from "./components/HomePage";
 class App extends Component {
   state = {
     isAuthenticated: Boolean(localStorage.getItem("token"))
@@ -28,7 +28,8 @@ class App extends Component {
         <React.Fragment>
           <NavBar isAuthenticated={isAuthenticated} onLogout={this.logout} />
           <div style={{ marginTop: "30px" }} className="container jumbotron">
-            <Route exact path="/" component={withAuth(PostsList)} />
+            <Route exact path="/" component={HomePage} />
+            <Route path="/posts" component={withAuth(PostsList)} />
             <Route path="/register" component={Register} />
             <Route
               path="/login"
