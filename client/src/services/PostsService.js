@@ -1,5 +1,7 @@
+import CONFIG from "../config";
+
 export const listAllPosts = async () => {
-  const response = await fetch("http://localhost:4000/api/posts/", {
+  const response = await fetch(CONFIG.API_BASE + "/posts", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -14,7 +16,7 @@ export const listAllPosts = async () => {
 };
 
 export const createPost = async text => {
-  const response = await fetch("http://localhost:4000/api/posts/", {
+  const response = await fetch(CONFIG.API_BASE + "/posts", {
     method: "POST",
     body: JSON.stringify({ post: text }),
     headers: {

@@ -1,5 +1,7 @@
+import CONFIG from "../config";
+
 export const authenticateUser = async (username, password) => {
-  const response = await fetch("http://localhost:4000/api/auth/authenticate", {
+  const response = await fetch(CONFIG.API_BASE + "/auth/authenticate", {
     method: "POST",
     body: JSON.stringify({ username, password }),
     headers: { "Content-Type": "application/json" }
@@ -21,7 +23,7 @@ export const authenticateUser = async (username, password) => {
 };
 
 export const signupUser = async (username, password) => {
-  const response = await fetch("http://localhost:4000/api/auth/register", {
+  const response = await fetch(CONFIG.API_BASE + "/auth/register", {
     method: "POST",
     body: JSON.stringify({ username, password }),
     headers: { "Content-Type": "application/json" }
