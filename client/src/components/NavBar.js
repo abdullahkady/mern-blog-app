@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default class NavBar extends Component {
   render() {
-    const { isAuthenticated } = this.props;
+    const { username } = this.props;
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,15 +36,18 @@ export default class NavBar extends Component {
             </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
-            {isAuthenticated ? (
-              <button
-                className="btn btn-danger my-2 my-sm-0"
-                onClick={this.props.onLogout}
-              >
-                <span>
-                  Logout <i className="fas fa-sign-out-alt" />
-                </span>
-              </button>
+            {username ? (
+              <React.Fragment>
+                <span style={{ marginRight: "10px" }}>Welcome, {username}</span>
+                <button
+                  className="btn btn-danger my-2 my-sm-0"
+                  onClick={this.props.onLogout}
+                >
+                  <span>
+                    Logout <i className="fas fa-sign-out-alt" />
+                  </span>
+                </button>
+              </React.Fragment>
             ) : (
               <React.Fragment>
                 <Link

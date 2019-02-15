@@ -16,7 +16,7 @@ export default class Login extends Component {
     try {
       await authenticateUser(username, password);
       if (this.props.updateAuthenticationState) {
-        this.props.updateAuthenticationState(true);
+        this.props.updateAuthenticationState();
       }
       this.setState({ redirect: true });
     } catch ({ message }) {
