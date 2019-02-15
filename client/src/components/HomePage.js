@@ -3,8 +3,22 @@ import { Link } from "react-router-dom";
 
 export default class HomePage extends Component {
   render() {
+    let alert = undefined;
+    if (this.props.location && this.props.location.state)
+      alert = this.props.location.state.alert;
+
     return (
       <div align="center">
+        {alert && (
+          <div className={`alert alert-dismissible alert-${alert.type}`}>
+            <button type="button" class="close" data-dismiss="alert">
+              &times;
+            </button>
+            <strong>{alert.header}</strong>
+            {" " + alert.message}
+          </div>
+        )}
+
         <h1>Welcome to React Blog!</h1>
         <hr />
         <div className="row">

@@ -30,7 +30,20 @@ export default class Login extends Component {
   render() {
     const { redirect, error } = this.state;
     if (redirect) {
-      return <Redirect to="/" />;
+      return (
+        <Redirect
+          to={{
+            pathname: "/",
+            state: {
+              alert: {
+                header: "Welcome!",
+                message: "You have been logged in successfully.",
+                type: "success"
+              }
+            }
+          }}
+        />
+      );
     }
 
     return (
