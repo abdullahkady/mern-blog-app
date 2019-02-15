@@ -20,14 +20,23 @@ export default class CreatePost extends Component {
     if (this.state.redirect) return <Redirect to="/" />;
 
     return (
-      <div>
-        <h2>Create a new post!</h2>
-        <form onSubmit={this.submitPost}>
-          <label htmlFor="text">Post text</label>
-          <input name="text" type="textarea" placeholder="Some text" />
-          <button>Submit</button>
-        </form>
-      </div>
+      <form onSubmit={this.submitPost}>
+        <fieldset>
+          <legend>Create a new post</legend>
+          <div className="form-group">
+            <textarea
+              className="form-control"
+              name="text"
+              placeholder="Post content..."
+              minLength="5"
+              rows="3"
+            />
+          </div>
+          <button type="submit" className="btn btn-success btn-block">
+            Submit
+          </button>
+        </fieldset>
+      </form>
     );
   }
 }

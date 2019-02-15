@@ -54,7 +54,7 @@ export default class Register extends Component {
                 autoComplete="new-password"
                 aria-describedby="passwordHelp"
                 placeholder="Password"
-                minlength="6"
+                minLength="6"
               />
               <small id="usernameHelp" class="form-text text-muted">
                 6 or more characters are required.
