@@ -20,6 +20,9 @@ export default class Login extends Component {
       }
       this.setState({ redirect: true });
     } catch ({ message }) {
+      if (!message) {
+        message = "Something went wrong, please try again later.";
+      }
       this.setState({ error: message });
     }
   };
@@ -32,6 +35,15 @@ export default class Login extends Component {
 
     return (
       <React.Fragment>
+        {error && (
+          <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">
+              &times;
+            </button>
+            <strong>Oops!</strong>
+            {" " + error}
+          </div>
+        )}
         <form onSubmit={this.onSubmit}>
           <fieldset>
             <legend>Sign in</legend>
@@ -62,12 +74,7 @@ export default class Login extends Component {
             </button>
           </fieldset>
         </form>
-        {error ? <p style={errorStyle}>ERROR: {this.state.error}</p> : ""}
       </React.Fragment>
     );
   }
 }
-
-const errorStyle = {
-  color: "red"
-};
