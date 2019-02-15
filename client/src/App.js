@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import HomePage from "./components/HomePage";
+import CreatePost from "./components/CreatePost";
 import withAuth from "./hocs/withAuth";
 import NavBar from "./components/NavBar";
 
