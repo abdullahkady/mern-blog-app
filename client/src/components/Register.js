@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { signupUser } from "../services/AuthService";
+import Spinner from "./Spinner";
 
 export default class Register extends Component {
   state = {
     redirect: false,
     error: null,
-    dismissError: false
+    dismissError: false,
+    isLoading: false
   };
 
   onSubmit = async e => {
     e.preventDefault();
+    this.setState({ isLoading: true });
     const username = e.target.username.value;
     const password = e.target.password.value;
     this.setState({ dismissError: false });
@@ -20,10 +23,11 @@ export default class Register extends Component {
     } catch ({ message }) {
       this.setState({ error: message });
     }
+    this.setState({ isLoading: false });
   };
 
   render() {
-    const { error, redirect } = this.state;
+    const { error, redirect, isLoading } = this.state;
     if (redirect) {
       return (
         <Redirect
@@ -42,6 +46,9 @@ export default class Register extends Component {
       );
     }
 
+    if (isLoading) {
+      return <Spinner />;
+    }
     return (
       <React.Fragment>
         {!this.state.dismissError && error && (

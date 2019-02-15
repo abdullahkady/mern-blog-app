@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { authenticateUser } from "../services/AuthService";
+import Spinner from "./Spinner";
 
 export default class Login extends Component {
   state = {
     redirect: false,
     error: null,
     dismissError: false,
-    dismissAlert: false
+    dismissAlert: false,
+    isLoading: false
   };
 
   onSubmit = async e => {
     e.preventDefault();
+    this.setState({ isLoading: true });
     this.setState({ error: null, dismissError: false });
     const username = e.target.username.value;
     const password = e.target.password.value;
@@ -28,10 +31,15 @@ export default class Login extends Component {
       }
       this.setState({ error: message });
     }
+    this.setState({ isLoading: false });
   };
 
   render() {
-    const { dismissError, redirect, error } = this.state;
+    const { dismissError, redirect, error, isLoading } = this.state;
+    if (isLoading) {
+      return <Spinner />;
+    }
+
     let alert = undefined;
     if (
       !this.state.dismissAlert &&
