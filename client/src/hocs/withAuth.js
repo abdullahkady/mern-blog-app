@@ -19,7 +19,20 @@ export default function withAuth(ComponentToProtect) {
     render() {
       const { redirect } = this.state;
       if (redirect) {
-        return <Redirect to="/login" />;
+        return (
+          <Redirect
+            to={{
+              pathname: "/login/",
+              state: {
+                alert: {
+                  header: "Sorry :(",
+                  message: `Your have to login first to be able to access the page.`,
+                  type: "warning"
+                }
+              }
+            }}
+          />
+        );
       }
       return <ComponentToProtect {...this.props} />;
     }

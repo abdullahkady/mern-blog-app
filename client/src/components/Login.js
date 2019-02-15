@@ -29,6 +29,10 @@ export default class Login extends Component {
 
   render() {
     const { redirect, error } = this.state;
+    let alert = undefined;
+    if (this.props.location && this.props.location.state)
+      alert = this.props.location.state.alert;
+
     if (redirect) {
       return (
         <Redirect
@@ -48,6 +52,15 @@ export default class Login extends Component {
 
     return (
       <React.Fragment>
+        {alert && (
+          <div className={`alert alert-dismissible alert-${alert.type}`}>
+            <button type="button" class="close" data-dismiss="alert">
+              &times;
+            </button>
+            <strong>{alert.header}</strong>
+            {" " + alert.message}
+          </div>
+        )}
         {error && (
           <div class="alert alert-dismissible alert-danger">
             <button type="button" class="close" data-dismiss="alert">

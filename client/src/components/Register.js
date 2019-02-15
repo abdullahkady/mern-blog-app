@@ -24,7 +24,21 @@ export default class Register extends Component {
   render() {
     const { error, redirect } = this.state;
     if (redirect) {
-      return <Redirect to="/login" />;
+      return (
+        <Redirect
+          to={{
+            pathname: "/login",
+            state: {
+              alert: {
+                header: "Welcome!",
+                message:
+                  "Your account has been created successfully. Enjoy your stay :)",
+                type: "success"
+              }
+            }
+          }}
+        />
+      );
     }
 
     return (

@@ -17,7 +17,21 @@ export default class CreatePost extends Component {
   };
 
   render() {
-    if (this.state.redirect) return <Redirect to="/" />;
+    if (this.state.redirect)
+      return (
+        <Redirect
+          to={{
+            pathname: "/",
+            state: {
+              alert: {
+                header: "Awesome!",
+                message: "Your post has been created.",
+                type: "info"
+              }
+            }
+          }}
+        />
+      );
 
     return (
       <form onSubmit={this.submitPost}>
