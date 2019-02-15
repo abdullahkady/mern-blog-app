@@ -5,8 +5,8 @@ const validations = require('./validation');
 
 const router = Router();
 
-router.use(isAuthenticated, validations.postValidator);
-router.post('/', createPost);
+router.use(isAuthenticated);
+router.post('/', validations.postValidator, createPost);
 router.get('/', listAllPosts);
 
 module.exports = router;
