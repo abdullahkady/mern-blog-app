@@ -33,8 +33,9 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route
               path="/login"
-              render={() => (
+              render={props => (
                 <Login
+                  {...props}
                   updateAuthenticationState={this.updateAuthenticationState}
                 />
               )}
