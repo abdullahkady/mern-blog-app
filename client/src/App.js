@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
 import NavBar from "./components/NavBar";
 
 class App extends Component {
@@ -23,7 +25,15 @@ class App extends Component {
         <React.Fragment>
           <NavBar isAuthenticated={isAuthenticated} onLogout={this.logout} />
           <div className="container jumbotron">
-            {/* ROUTER */}
+            <Route path="/register" component={Register} />
+            <Route
+              path="/login"
+              render={() => (
+                <Login
+                  updateAuthenticationState={this.updateAuthenticationState}
+                />
+              )}
+            />
           </div>
         </React.Fragment>
       </Router>
