@@ -41,15 +41,25 @@ export default class NavBar extends Component {
                 className="btn btn-danger my-2 my-sm-0"
                 onClick={this.props.onLogout}
               >
-                Logout
+                <span>
+                  Logout <i class="fas fa-sign-out-alt" />
+                </span>
               </button>
             ) : (
               <React.Fragment>
-                <Link className="btn btn-secondary my-2 my-sm-0" to="/login">
-                  Login
+                <Link
+                  className="btn btn-success"
+                  to="/register"
+                  style={{ marginRight: "5px" }}
+                >
+                  <span>
+                    Register <i class="fas fa-plus-square" />
+                  </span>
                 </Link>
-                <Link className="btn btn-success my-2 my-sm-0" to="/register">
-                  Register
+                <Link className="btn btn-secondary" to="/login">
+                  <span>
+                    Login <i class="fas fa-sign-in-alt" />
+                  </span>
                 </Link>
               </React.Fragment>
             )}
