@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import HomePage from "./components/HomePage";
+import PostsList from "./components/PostsList";
 import CreatePost from "./components/CreatePost";
 import withAuth from "./hocs/withAuth";
 import NavBar from "./components/NavBar";
@@ -27,8 +27,8 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <NavBar isAuthenticated={isAuthenticated} onLogout={this.logout} />
-          <div className="container jumbotron">
-            <Route exact path="/" component={withAuth(HomePage)} />
+          <div style={{ marginTop: "30px" }} className="container jumbotron">
+            <Route exact path="/" component={withAuth(PostsList)} />
             <Route path="/register" component={Register} />
             <Route
               path="/login"
