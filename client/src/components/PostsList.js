@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { listAllPosts } from "../services/PostsService";
 import Post from "./Post";
 
-export default class HomePage extends Component {
+export default class PostsList extends Component {
   _isMounted = true;
   state = {
     posts: []
@@ -13,7 +13,7 @@ export default class HomePage extends Component {
   };
   async componentDidMount() {
     const posts = await listAllPosts();
-     this.setState({ posts });
+    this.setState({ posts });
   }
 
   componentWillUnmount() {
@@ -23,15 +23,15 @@ export default class HomePage extends Component {
   render() {
     const { posts } = this.state;
     return (
-      <div className="App">
+      <div>
         <h1>Welcome to homepage!</h1>
         <h2>Nice to have you :)</h2>
         <hr />
-        <ul>
+        <div align="center">
           {posts.map((post, i) => (
             <Post key={i} post={post} />
           ))}
-        </ul>
+        </div>
       </div>
     );
   }
