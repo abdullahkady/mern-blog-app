@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { listAllPosts } from "../services/PostsService";
+import { Link } from "react-router-dom";
 import Post from "./Post";
 
 export default class PostsList extends Component {
@@ -23,15 +24,17 @@ export default class PostsList extends Component {
   render() {
     const { posts } = this.state;
     return (
-      <div>
-        <h1>Welcome to homepage!</h1>
-        <h2>Nice to have you :)</h2>
+      <div align="center">
+        <h1>All posts :)</h1>
+        <Link className="btn btn-success" to="/create">
+          <span>
+            Add your own <i className="fas fa-plus" />
+          </span>
+        </Link>
         <hr />
-        <div align="center">
-          {posts.map((post, i) => (
-            <Post key={i} post={post} />
-          ))}
-        </div>
+        {posts.map((post, i) => (
+          <Post key={i} post={post} />
+        ))}
       </div>
     );
   }

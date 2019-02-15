@@ -4,7 +4,7 @@ export default class Post extends Component {
   render() {
     const { author, text } =   this.props.post;
     return (
-      <div className="card border-primary mb-3" style={{ maxWidth: "20rem" }}>
+      <div className="card border-info mb-3" style={{ maxWidth: "20rem" }}>
         <div className="card-header" style={{ textAlign: "left" }}>
           <span>
             <i className="fas fa-user" /> {author.username}
