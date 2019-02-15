@@ -4,8 +4,7 @@ const validations = require('./validation');
 
 const router = Router();
 
-router.use(validations.authValidator);
-router.post('/register', registerUser);
-router.post('/authenticate', authenticateUser);
+router.post('/register', validations.authValidator, registerUser);
+router.post('/authenticate', validations.authValidator, authenticateUser);
 
 module.exports = router;
