@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { listAllPosts } from "../services/PostsService";
 import { Link } from "react-router-dom";
 import Post from "./Post";
+import Spinner from "./Spinner";
 
 export default class PostsList extends Component {
   _isMounted = true;
   state = {
-    posts: []
+    posts: [],
+    isLoading: true
   };
 
   addNewPost = e => {
@@ -14,7 +16,7 @@ export default class PostsList extends Component {
   };
   async componentDidMount() {
     const posts = await listAllPosts();
-    if (this._isMounted) this.setState({ posts });
+    if (this._isMounted) this.setState({ posts, isLoading: false });
   }
 
   componentWillUnmount() {
@@ -22,10 +24,13 @@ export default class PostsList extends Component {
   }
 
   render() {
-    const { posts } = this.state;
+    const { isLoading, posts } = this.state;
+    if (isLoading) {
+      return <Spinner />;
+    }
     return (
       <div align="center">
-        <h1>All posts :)</h1>
+        <h1>Posts List</h1>
         <Link className="btn btn-success" to="/create">
           <span>
             Add your own <i className="fas fa-plus" />
