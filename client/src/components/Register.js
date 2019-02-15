@@ -29,23 +29,44 @@ export default class Register extends Component {
 
     return (
       <React.Fragment>
-        <h2>Register</h2>
         <form onSubmit={this.onSubmit}>
-          {error ? <p style={errorStyle}>ERROR: {this.state.error}</p> : ""}
-          <input
-            autoComplete="username"
-            name="username"
-            type="text"
-            placeholder="Enter your username"
-          />
-          <input
-            autoComplete="new-password"
-            name="password"
-            type="text"
-            placeholder="Enter your password"
-          />
-          <button> REGISTER! </button>
+          <fieldset>
+            <legend>Register a new account</legend>
+
+            <div class="form-group">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                autoComplete="username"
+                placeholder="Enter username"
+              />
+            </div>
+            <div class="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                autoComplete="new-password"
+                aria-describedby="passwordHelp"
+                placeholder="Password"
+                minlength="6"
+              />
+              <small id="usernameHelp" class="form-text text-muted">
+                6 or more characters are required.
+              </small>
+            </div>
+            <button type="submit" class="btn btn-success">
+              Signup
+            </button>
+          </fieldset>
         </form>
+
+        {error ? <p style={errorStyle}>ERROR: {this.state.error}</p> : ""}
       </React.Fragment>
     );
   }

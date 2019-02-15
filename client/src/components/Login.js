@@ -32,29 +32,37 @@ export default class Login extends Component {
 
     return (
       <React.Fragment>
-        <h2>Sign-in</h2>
         <form onSubmit={this.onSubmit}>
-          {error ? <p style={errorStyle}>ERROR: {this.state.error}</p> : ""}
-          <div>
-            <label htmlFor="username">Username</label>
-            <input
-              autoComplete="username"
-              name="username"
-              type="text"
-              placeholder="Enter your username"
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <input
-              autoComplete="current-password"
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-            />
-          </div>
-          <button> LOGIN </button>
+          <fieldset>
+            <legend>Sign in</legend>
+            <div class="form-group">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                autoComplete="username"
+                placeholder="Enter username"
+              />
+            </div>
+            <div class="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                autoComplete="current-password"
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+            <button type="submit" class="btn btn-success">
+              Login
+            </button>
+          </fieldset>
         </form>
+        {error ? <p style={errorStyle}>ERROR: {this.state.error}</p> : ""}
       </React.Fragment>
     );
   }
