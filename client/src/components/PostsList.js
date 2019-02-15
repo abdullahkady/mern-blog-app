@@ -14,7 +14,7 @@ export default class PostsList extends Component {
   };
   async componentDidMount() {
     const posts = await listAllPosts();
-    this.setState({ posts });
+    if (this._isMounted) this.setState({ posts });
   }
 
   componentWillUnmount() {
