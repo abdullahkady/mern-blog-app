@@ -11,7 +11,7 @@ export default class HomePage extends Component {
       <div align="center">
         {alert && (
           <div className={`alert alert-dismissible alert-${alert.type}`}>
-            <button type="button" class="close" data-dismiss="alert">
+            <button type="button" className="close" data-dismiss="alert">
               &times;
             </button>
             <strong>{alert.header}</strong>
@@ -25,13 +25,13 @@ export default class HomePage extends Component {
           <div className="col-md-2" />
           <div className="col-md-4">
             <p>You can check out all the users posts</p>
-            <Link to="/posts" class="btn btn-outline-info">
+            <Link to="/posts" className="btn btn-outline-info">
               View posts
             </Link>
           </div>
           <div className="col-md-4">
             <p>Or you can create your own</p>
-            <Link to="/create" class="btn btn-outline-success">
+            <Link to="/create" className="btn btn-outline-success">
               Create a post
             </Link>
           </div>

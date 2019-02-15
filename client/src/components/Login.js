@@ -54,7 +54,7 @@ export default class Login extends Component {
       <React.Fragment>
         {alert && (
           <div className={`alert alert-dismissible alert-${alert.type}`}>
-            <button type="button" class="close" data-dismiss="alert">
+            <button type="button" className="close" data-dismiss="alert">
               &times;
             </button>
             <strong>{alert.header}</strong>
@@ -62,8 +62,8 @@ export default class Login extends Component {
           </div>
         )}
         {error && (
-          <div class="alert alert-dismissible alert-danger">
-            <button type="button" class="close" data-dismiss="alert">
+          <div className="alert alert-dismissible alert-danger">
+            <button type="button" className="close" data-dismiss="alert">
               &times;
             </button>
             <strong>Oops!</strong>
@@ -73,29 +73,29 @@ export default class Login extends Component {
         <form onSubmit={this.onSubmit}>
           <fieldset>
             <legend>Sign in</legend>
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="username">Username</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="username"
                 name="username"
                 autoComplete="username"
                 placeholder="Enter username"
               />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 id="password"
                 autoComplete="current-password"
                 name="password"
                 placeholder="Password"
               />
             </div>
-            <button type="submit" class="btn btn-success">
+            <button type="submit" className="btn btn-success">
               Login
             </button>
           </fieldset>

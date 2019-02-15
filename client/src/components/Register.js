@@ -47,22 +47,22 @@ export default class Register extends Component {
           <fieldset>
             <legend>Register a new account</legend>
 
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="username">Username</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="username"
                 name="username"
                 autoComplete="username"
                 placeholder="Enter username"
               />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 id="password"
                 name="password"
                 autoComplete="new-password"
@@ -70,11 +70,11 @@ export default class Register extends Component {
                 placeholder="Password"
                 minLength="6"
               />
-              <small id="usernameHelp" class="form-text text-muted">
+              <small id="usernameHelp" className="form-text text-muted">
                 6 or more characters are required.
               </small>
             </div>
-            <button type="submit" class="btn btn-success">
+            <button type="submit" className="btn btn-success">
               Signup
             </button>
           </fieldset>

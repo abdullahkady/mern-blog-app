@@ -42,7 +42,7 @@ export default class NavBar extends Component {
                 onClick={this.props.onLogout}
               >
                 <span>
-                  Logout <i class="fas fa-sign-out-alt" />
+                  Logout <i className="fas fa-sign-out-alt" />
                 </span>
               </button>
             ) : (
@@ -53,12 +53,12 @@ export default class NavBar extends Component {
                   style={{ marginRight: "5px" }}
                 >
                   <span>
-                    Register <i class="fas fa-plus-square" />
+                    Register <i className="fas fa-plus-square" />
                   </span>
                 </Link>
                 <Link className="btn btn-secondary" to="/login">
                   <span>
-                    Login <i class="fas fa-sign-in-alt" />
+                    Login <i className="fas fa-sign-in-alt" />
                   </span>
                 </Link>
               </React.Fragment>
